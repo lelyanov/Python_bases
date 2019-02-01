@@ -1,11 +1,11 @@
 # Задание-1:
 # Матрицы в питоне реализуются в виде вложенных списков:
 # Пример. Дано:
-"""
+
 matrix = [[1, 0, 8],
           [3, 4, 1],
           [0, 4, 2]]
-"""
+
 # Выполнить поворот (транспонирование) матрицы
 # Пример. Результат:
 # matrix_rotate = [[1, 3, 0],
@@ -13,6 +13,10 @@ matrix = [[1, 0, 8],
 #                  [8, 1, 2]]
 
 # Суть сложности hard: Решите задачу в одну строку
+
+print('Задание 1')
+# кручу-верчу, ниче делать не хочу
+print([[matrix[j][i] for j in range(len(matrix[i]))] for i in range(len(matrix))])
 
 
 # Задание-2:
@@ -41,3 +45,25 @@ number = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
 
+print('Задание 2')
+# поиск максимального произведения из 5 последовательных символов
+def max_value(number):
+    max_v = 0
+    index_max_v = 0
+    max_number = ''
+    number = number.replace('\n', '')
+    for i, _ in enumerate(number):
+        new_v = number[i:i+5]
+        if len(new_v) > 5:
+            continue
+        _sum = 1
+        for v in new_v:
+            _sum = _sum * int(v)
+        if _sum > max_v:
+            max_v = _sum
+            max_number = new_v
+            index_max_v = i
+    return (max_v, max_number, index_max_v)
+
+result = max_value(number)
+print(f'Максимальное произведение: {result[0]} \nПодходящая последовательность: {result[1]} \nИндекс: {result[2]}')

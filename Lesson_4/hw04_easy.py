@@ -5,14 +5,25 @@
 # Получить новый список, элементы которого будут
 # квадратами элементов исходного списка
 # [0, 1, 2, 3] --> [0, 1, 4, 9]
+import random
 
-
+print('Задание 1')
+list_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print('Новый список:', [v**2 for v in list_1])
 
 # Задание-2:
 # Даны два списка фруктов.
 # Получить список фруктов, присутствующих в обоих исходных списках.
 
+print('Задача 2')
+fruits_1 = ['apple', 'banana', 'lime', 'grapes', 'grapefruit', 'mango', 'pear']
+fruits_2 = ['peach', 'apple', 'kiwi', 'banana', 'lime', 'grapefruit', 'persimmon', 'mango', 'tangerine']
 
+# Самое простое решение
+print('Через set:', list(set(fruits_1) & set(fruits_2)))
+
+# Решение через ген. списков
+print('через генератор списков', [v for v in fruits_1 if v in fruits_2])
 
 # Задание-3:
 # Дан список, заполненный произвольными числами.
@@ -21,7 +32,8 @@
 # + Элемент неотрицательный
 # + Элемент не кратен 3
 
-
-
-
+print('Задание 3')
+list_1 = []
+[list_1.append(i) for i in range(-5, 50)]
+print('Результат:', [v for v in list_1 if v >= 0 and v % 2 == 0 and v % 3 != 0])
 
