@@ -15,15 +15,52 @@
 # и импортированные в данный файл из easy.py
 # ИСПОЛЬЗОВАТЬ МОДУЛЬ OS и SHUTIL
 
+# используем оригинальный модуль от первого задания hw05_easy
+import hw05_easy as easy
+import os
 
+def Menu():
+    while True:
+        print('===================================================')
+        print(f'Текущий каталог: {os.getcwd()}')
+        print('1 - Перейти в папку')
+        print('2 - Просмотреть содержимое текущей папки')
+        print('3 - Удалить папку')
+        print('4 - Создать папку')
+        print('5 - Выход')
+        print('===================================================')
+        response = input('Выберите действие -> ')
 
+        def change_dir():
+            name_dir = input('Введите название папки: ')
+            try:
+                os.chdir(name_dir)
+                print(f"Переход в каталог: {name_dir}")
+            except:
+                print(f"Ошибка перехода в каталог: {name_dir}")
+        def get_dirs():
+            print(easy.get_dirs())
+        def remove_dir():
+            name_dir = input('Введите название папки: ')
+            err = easy.remove_dir(name_dir)
+            print(f"Ошибка удаления папки: {name_dir}") if err else print(f"Папка удалена: {name_dir}")
+        def create_dir():
+            name_dir = input('Введите название папки: ')
+            err = easy.create_dir(name_dir)
+            print(f"Ошибка создания папки: {name_dir}") if err else print(f"Папка создана: {name_dir}")
+        def exit():
+            return
 
+        do = {
+            '1': change_dir,
+            '2': get_dirs,
+            '3': remove_dir,
+            '4': create_dir,
+            '5': exit
+        }
 
-
-
-
-
-
-
-
-
+        if response and do.get(response):
+             do[response]()
+        else:
+            print('Команда не найдена')
+Menu()
